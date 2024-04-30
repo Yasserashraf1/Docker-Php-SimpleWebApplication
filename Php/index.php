@@ -1,1 +1,103 @@
+<?php
 
+$connect = mysqli_connect(
+    'db', # service name
+    'php_docker', # username
+    'password', # password
+    'php_docker' # db table
+);
+
+$table_name = "Students_info";
+
+$query = "SELECT * FROM $table_name";
+
+$response = mysqli_query($connect, $query);
+
+if (mysqli_num_rows($response) > 0) {
+    // Output the HTML header including the favicon link and background image
+    echo "<!DOCTYPE html>";
+    echo "<html lang='en'>";
+    echo "<head>";
+    echo "<meta charset='UTF-8'>";
+    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+    echo "<title>Cloud Project</title>";
+    echo "<link rel='icon' type='image/x-icon' href='images/dockericon.ico'>";
+    echo "<style>
+            body {
+                background-image: url('images/download.jpg');
+                background-size: cover;
+                background-position: center;
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 90%;
+                margin: 100px auto; /* Adjusted margin to move the table down */
+                padding: 20px;
+                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+                border-radius: 10px; /* Rounded corners */
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+            }
+            th, td {
+                padding: 10px;
+                text-align: left;
+                color: #333333; /* Dark text color */
+            }
+            th {
+                background-color: #f2f2f2; /* Light gray background for header */
+                border-bottom: 2px solid #dddddd; /* Bottom border */
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9; /* Alternate row background color */
+            }
+            caption {
+                padding: 10px;
+                font-weight: bold;
+                font-size: 18px;
+                color: #ffffff; /* White text color */
+                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+                border-radius: 5px; /* Rounded corners */
+                margin-bottom: 10px;
+            }
+        </style>";
+    echo "</head>";
+    echo "<body>";
+
+    echo "<div class='container'>";
+    echo "<table>";
+    echo "<caption><strong>Students Data</strong></caption>";
+    echo "<tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>CGPA</th>
+          </tr>";
+
+    while($row = mysqli_fetch_assoc($response)) {
+        echo "<tr>";
+        echo "<td>".$row['ID']."</td>";
+        echo "<td>".$row['name']."</td>";
+        echo "<td>".$row['age']."</td>";
+        echo "<td>".$row['CGPA']."</td>";
+        echo "</tr>";
+    }
+
+    echo "</table>";
+    echo "</div>";
+
+    echo "</body>";
+    echo "</html>";
+} else {
+    echo "No records found";
+}
+
+mysqli_close($connect);
+?>
