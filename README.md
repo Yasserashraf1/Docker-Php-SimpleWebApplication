@@ -1,4 +1,4 @@
-Docker-php-SimpleWebApplication
+#Docker-php-SimpleWebApplication
 This is a simple way to create a web application using Docker Compose to create the containers and Dockerfile to build your application image.
 
 You can run this application using the command <docker-compose up> on your terminal (I'm using VSC terminal).
