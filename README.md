@@ -1,4 +1,4 @@
-#Docker-php-SimpleWebApplication
+# Docker-php-Simple Web Application
 
 This is a simple way to create a web application using Docker Compose to create the containers and Dockerfile to build your application image.
 
@@ -13,5 +13,4 @@ This project is for the cloud course in the Faculty of Data Science and Computin
 
 Supervisors: Dr. Amira Alshazly, Eng. Sara Ali.
 
-
-
+# Yasser Gaber
