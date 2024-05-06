@@ -1,102 +1,61 @@
-<?php
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: db:3306
+-- Generation Time: Apr 27, 2024 at 05:40 PM
+-- Server version: 8.3.0
+-- PHP Version: 8.2.8
 
-$connect = mysqli_connect(
-    'db', # service name
-    'php_docker', # username
-    'password', # password
-    'php_docker' # db name
-);
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-$table_name = "Students_info";
 
-$query = "SELECT * FROM $table_name";
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-$response = mysqli_query($connect, $query);
+--
+-- Database: `php_docker`
+--
 
-if (mysqli_num_rows($response) > 0) {
-    echo "<!DOCTYPE html>";
-    echo "<html lang='en'>";
-    echo "<head>";
-    echo "<meta charset='UTF-8'>";
-    echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-    echo "<title>Cloud Project</title>";
-    echo "<link rel='icon' type='image/x-icon' href='images/dockericon.ico'>";
-    echo "<style>
-            body {
-                background-image: url('images/download.jpg');
-                background-size: cover;
-                background-position: center;
-                font-family: Arial, sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-            .container {
-                width: 90%;
-                margin: 100px auto;
-                padding: 20px;
-                background-color: rgba(255, 255, 255, 0.8); 
-                border-radius: 10px;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
-            }
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                background-color: rgba(255, 255, 255, 0.9); 
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-            }
-            th, td {
-                padding: 10px;
-                text-align: left;
-                color: #333333;
-            }
-            th {
-                background-color: #f2f2f2; 
-                border-bottom: 2px solid #dddddd;
-            }
-            tr:nth-child(even) {
-                background-color: #f9f9f9; 
-            }
-            caption {
-                padding: 10px;
-                font-weight: bold;
-                font-size: 18px;
-                color: #ffffff;
-                background-color: rgba(0, 0, 0, 0.5); 
-                border-radius: 5px;
-                margin-bottom: 10px;
-            }
-        </style>";
-    echo "</head>";
-    echo "<body>";
+-- --------------------------------------------------------
 
-    echo "<div class='container'>";
-    echo "<table>";
-    echo "<caption><strong>Students Data</strong></caption>";
-    echo "<tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>CGPA</th>
-          </tr>";
+--
+-- Table structure for table `Students_info`
+--
 
-    while($row = mysqli_fetch_assoc($response)) {
-        echo "<tr>";
-        echo "<td>".$row['ID']."</td>";
-        echo "<td>".$row['name']."</td>";
-        echo "<td>".$row['age']."</td>";
-        echo "<td>".$row['CGPA']."</td>";
-        echo "</tr>";
-    }
+CREATE TABLE `Students_info` (
+  `ID` int NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `age` int NOT NULL DEFAULT '20',
+  `CGPA` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-    echo "</table>";
-    echo "</div>";
-    echo "</body>";
-    echo "</html>";
+--
+-- Dumping data for table `Students_info`
+--
 
-} else {
-    echo "No records found";
-}
+INSERT INTO `Students_info` (`ID`, `name`, `age`, `CGPA`) VALUES
+(22010136, 'Abdo Hesham', 20, 3),
+(22010290, 'Wael Ahmed', 20, 3),
+(22010364, 'Abdo Yousry', 20, 3),
+(22010409, 'Yasser Gaber', 20, 3),
+(221443166, 'Hatem Mohammed', 20, 3);
 
-mysqli_close($connect);
-?>
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `Students_info`
+--
+ALTER TABLE `Students_info`
+  ADD PRIMARY KEY (`ID`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
