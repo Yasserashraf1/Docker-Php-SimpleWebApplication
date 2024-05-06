@@ -4,7 +4,7 @@ $connect = mysqli_connect(
     'db', # service name
     'php_docker', # username
     'password', # password
-    'php_docker' # db table
+    'php_docker' # db name
 );
 
 $table_name = "Students_info";
@@ -14,7 +14,6 @@ $query = "SELECT * FROM $table_name";
 $response = mysqli_query($connect, $query);
 
 if (mysqli_num_rows($response) > 0) {
-    // Output the HTML header including the favicon link and background image
     echo "<!DOCTYPE html>";
     echo "<html lang='en'>";
     echo "<head>";
@@ -33,38 +32,38 @@ if (mysqli_num_rows($response) > 0) {
             }
             .container {
                 width: 90%;
-                margin: 100px auto; /* Adjusted margin to move the table down */
+                margin: 100px auto;
                 padding: 20px;
-                background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-                border-radius: 10px; /* Rounded corners */
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+                background-color: rgba(255, 255, 255, 0.8); 
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
             }
             table {
                 width: 100%;
                 border-collapse: collapse;
-                background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
-                border-radius: 10px; /* Rounded corners */
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+                background-color: rgba(255, 255, 255, 0.9); 
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             }
             th, td {
                 padding: 10px;
                 text-align: left;
-                color: #333333; /* Dark text color */
+                color: #333333;
             }
             th {
-                background-color: #f2f2f2; /* Light gray background for header */
-                border-bottom: 2px solid #dddddd; /* Bottom border */
+                background-color: #f2f2f2; 
+                border-bottom: 2px solid #dddddd;
             }
             tr:nth-child(even) {
-                background-color: #f9f9f9; /* Alternate row background color */
+                background-color: #f9f9f9; 
             }
             caption {
                 padding: 10px;
                 font-weight: bold;
                 font-size: 18px;
-                color: #ffffff; /* White text color */
-                background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-                border-radius: 5px; /* Rounded corners */
+                color: #ffffff;
+                background-color: rgba(0, 0, 0, 0.5); 
+                border-radius: 5px;
                 margin-bottom: 10px;
             }
         </style>";
@@ -92,9 +91,9 @@ if (mysqli_num_rows($response) > 0) {
 
     echo "</table>";
     echo "</div>";
-
     echo "</body>";
     echo "</html>";
+
 } else {
     echo "No records found";
 }
